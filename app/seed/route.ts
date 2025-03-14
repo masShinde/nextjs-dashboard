@@ -83,7 +83,7 @@ async function seedCustomers() {
 async function seedRevenue() {
   await sql`
     CREATE TABLE IF NOT EXISTS revenue (
-      month VARCHAR(4) NOT NULL UNIQUE,
+      month VARCHAR(4) NOT NULL UNIQUE PRIMARY KEY,
       revenue INT NOT NULL
     );
   `;
@@ -104,9 +104,9 @@ async function seedRevenue() {
 export async function GET() {
   try {
     const result = await sql.begin((sql) => [
-      seedUsers(),
-      seedCustomers(),
-      seedInvoices(),
+      // seedUsers(),
+      // seedCustomers(),
+      // seedInvoices(),
       seedRevenue(),
     ]);
 
